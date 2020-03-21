@@ -36,9 +36,12 @@ class Board extends React.Component {
 
   render() {
     const winner = calculateWinner(this.state.squares);
+    const isDraw = (value) => value != null;
     let status;
     if (winner) {
       status = 'Winner is -  ' + winner;
+    } else if (this.state.squares.every(isDraw)) {
+      status = 'It\'s Draw!';
     } else {
       status = 'Next is: ' + (this.state.xIsNext ? 'X' : 'O');
     }
